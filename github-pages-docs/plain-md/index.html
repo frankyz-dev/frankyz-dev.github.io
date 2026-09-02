@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plain Markdown — Demo Index</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: #0d1117; color: #e6edf3;
+    margin: 0 auto; max-width: 780px; padding: 3rem 1.25rem 4rem;
+    line-height: 1.6;
+  }
+  h1 { font-size: 1.6rem; margin: 0 0 .5rem; }
+  .sub { color: #8b949e; margin: 0 0 2rem; }
+  .sub code { background: #161b22; padding: .15em .4em; border-radius: 4px; font-size: 85%; }
+  h2 { font-size: 1.1rem; margin: 2rem 0 .5rem; }
+  ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .5rem; }
+  ul a {
+    color: #58a6ff; text-decoration: none; font-weight: 600;
+    background: #161b22; border: 1px solid #30363d; border-radius: 8px;
+    padding: .7rem 1rem; display: block;
+  }
+  ul a:hover { text-decoration: underline; }
+  ul .path { color: #8b949e; font-size: .8rem; font-weight: 400;
+             font-family: ui-monospace, Menlo, Consolas, monospace; }
+  .note { margin-top: 2.5rem; padding-top: 1.25rem; border-top: 1px solid #21262d;
+          color: #8b949e; font-size: .85rem; }
+</style>
+</head>
+<body>
+  <h1>Plain Markdown</h1>
+  <p class="sub">
+    No generator, no build — just the raw <code>.md</code> files. This is the
+    "Option 1" baseline: what you get on GitHub Pages with zero tooling.
+  </p>
+
+  <h2>Design</h2>
+  <ul>
+    <li><a href="design/architecture.md">Architecture <span class="path">design/architecture.md</span></a></li>
+    <li><a href="design/poc-subpage.md">POC Subpage <span class="path">design/poc-subpage.md</span></a></li>
+  </ul>
+
+  <h2>SOPs</h2>
+  <ul>
+    <li><a href="sops/deploy-release.md">Deploy a Release <span class="path">sops/deploy-release.md</span></a></li>
+    <li><a href="sops/rotate-credentials.md">Rotate Gateway DB Credentials <span class="path">sops/rotate-credentials.md</span></a></li>
+  </ul>
+
+  <h2>Runbooks</h2>
+  <ul>
+    <li><a href="runbooks/high-error-rate.md">High Error Rate <span class="path">runbooks/high-error-rate.md</span></a></li>
+  </ul>
+
+  <p class="note">
+    GitHub Pages serves <code>.md</code> files as raw <code>text/markdown</code>
+    (the browser shows the source). Rendered views are available in the
+    <a href="https://github.com/frankyz-dev/frankyz-dev.github.io/tree/main/github-pages-docs/plain-md">repo file browser</a>,
+    and the local mock server (<code>server/server.mjs</code>) renders them
+    like GitHub's built-in renderer would.
+  </p>
+</body>
+</html>

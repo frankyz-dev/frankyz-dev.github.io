@@ -33,16 +33,16 @@ There is nothing to build or serve — the files are read raw:
   python3 -m http.server 4101
   ```
 
-- Or view it rendered (like GitHub's built-in renderer would) via the
-  GitHub Pages mock server: `cd server && npm start`, then open
-  `http://127.0.0.1:4100/github-pages-docs/plain-md/`.
+  You'll get a plain directory listing and the raw `.md` / image files,
+  with no rendering.
 
-  Then open http://localhost:4101 — you'll get a plain directory listing
-  and the raw `.md` / image files, with no rendering.
+- Or view it via the GitHub Pages mock server: `cd server && npm start`,
+  then open `http://127.0.0.1:4100/github-pages-docs/plain-md/`. The mock
+  renders `.md` files like GitHub's built-in renderer would (production
+  GitHub Pages serves them as raw `text/markdown`).
 
-Note: rendering of the Markdown (headings, tables, code highlighting,
-images) only happens when GitHub's renderer processes the files — locally
-you see the source.
+`index.html` is a directory index (GitHub Pages doesn't auto-serve
+`README.md` as a folder index).
 
 ## What this option lacks
 
