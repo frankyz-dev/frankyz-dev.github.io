@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <!-- page background -->
+  <rect x="0" y="0" width="1200" height="560" fill="#ffffff"/>
+
+  <!-- top bar -->
+  <rect x="0" y="0" width="1200" height="56" fill="#ffffff"/>
+  <line x1="0" y1="56" x2="1200" y2="56" stroke="#e2e8f0" stroke-width="1.5"/>
+  <g fill="#2563eb">
+    <circle cx="34" cy="30" r="9"/>
+    <circle cx="46" cy="26" r="11"/>
+    <rect x="26" y="30" width="30" height="10" rx="5"/>
+  </g>
+  <text x="66" y="35" font-size="17" font-weight="700" fill="#0f172a">Acme Cloud</text>
+  <rect x="300" y="14" width="400" height="28" rx="14" fill="#f1f5f9" stroke="#e2e8f0"/>
+  <text x="322" y="32" font-size="13" fill="#94a3b8">Search resources…</text>
+  <circle cx="1100" cy="28" r="10" fill="none" stroke="#475569" stroke-width="1.5"/>
+  <line x1="1107" y1="35" x2="1112" y2="40" stroke="#475569" stroke-width="1.5"/>
+  <circle cx="1150" cy="28" r="14" fill="#2563eb"/>
+  <text x="1150" y="33" text-anchor="middle" font-size="13" font-weight="600" fill="#ffffff">A</text>
+
+  <!-- sidebar -->
+  <rect x="0" y="56" width="240" height="504" fill="#f8fafc"/>
+  <line x1="240" y1="56" x2="240" y2="560" stroke="#e2e8f0" stroke-width="1.5"/>
+  <g font-size="14" fill="#334155">
+    <rect x="28" y="92" width="12" height="12" rx="3" fill="#94a3b8"/>
+    <text x="52" y="103">Overview</text>
+    <rect x="28" y="136" width="12" height="12" rx="3" fill="#94a3b8"/>
+    <text x="52" y="147">Compute</text>
+    <rect x="28" y="180" width="12" height="12" rx="3" fill="#94a3b8"/>
+    <text x="52" y="191">Storage</text>
+    <rect x="28" y="224" width="12" height="12" rx="3" fill="#94a3b8"/>
+    <text x="52" y="235">Networking</text>
+    <rect x="28" y="268" width="12" height="12" rx="3" fill="#94a3b8"/>
+    <text x="52" y="279">Databases</text>
+    <!-- active item -->
+    <rect x="12" y="304" width="216" height="36" rx="6" fill="#dbeafe"/>
+    <rect x="12" y="304" width="4" height="36" fill="#2563eb"/>
+    <rect x="28" y="316" width="12" height="12" rx="3" fill="#2563eb"/>
+    <text x="52" y="327" font-weight="600" fill="#1d4ed8">Services</text>
+    <rect x="28" y="360" width="12" height="12" rx="3" fill="#94a3b8"/>
+    <text x="52" y="371">Monitoring</text>
+    <rect x="28" y="404" width="12" height="12" rx="3" fill="#94a3b8"/>
+    <text x="52" y="415">Billing</text>
+  </g>
+
+  <!-- main header -->
+  <text x="272" y="88" font-size="13" fill="#64748b">Services / order-service</text>
+  <text x="272" y="122" font-size="24" font-weight="700" fill="#0f172a">Services</text>
+  <rect x="1000" y="96" width="160" height="40" rx="8" fill="#2563eb"/>
+  <text x="1080" y="121" text-anchor="middle" font-size="14" font-weight="600" fill="#ffffff">+ Create service</text>
+
+  <!-- table -->
+  <rect x="272" y="150" width="888" height="40" fill="#f1f5f9"/>
+  <line x1="272" y1="150" x2="1160" y2="150" stroke="#e2e8f0" stroke-width="1.5"/>
+  <line x1="272" y1="190" x2="1160" y2="190" stroke="#e2e8f0" stroke-width="1.5"/>
+  <g font-size="12" font-weight="600" fill="#475569">
+    <text x="292" y="175">NAME</text>
+    <text x="560" y="175">STATUS</text>
+    <text x="740" y="175">REGION</text>
+    <text x="900" y="175">TYPE</text>
+    <text x="1060" y="175">UPDATED</text>
+  </g>
+
+  <!-- row separators -->
+  <g stroke="#e2e8f0" stroke-width="1">
+    <line x1="272" y1="238" x2="1160" y2="238"/>
+    <line x1="272" y1="286" x2="1160" y2="286"/>
+    <line x1="272" y1="334" x2="1160" y2="334"/>
+    <line x1="272" y1="382" x2="1160" y2="382"/>
+    <line x1="272" y1="430" x2="1160" y2="430"/>
+    <line x1="272" y1="478" x2="1160" y2="478"/>
+  </g>
+
+  <!-- row 1 -->
+  <text x="292" y="219" font-size="14" font-weight="500" fill="#0f172a">order-service-api</text>
+  <rect x="560" y="202" width="84" height="24" rx="12" fill="#dcfce7"/>
+  <circle cx="574" cy="214" r="4" fill="#16a34a"/>
+  <text x="584" y="219" font-size="12" fill="#15803d">Running</text>
+  <text x="740" y="219" font-size="13" fill="#475569">us-east-1</text>
+  <text x="900" y="219" font-size="13" fill="#475569">Container</text>
+  <text x="1060" y="219" font-size="13" fill="#475569">2m ago</text>
+
+  <!-- row 2 -->
+  <text x="292" y="267" font-size="14" font-weight="500" fill="#0f172a">order-worker</text>
+  <rect x="560" y="250" width="84" height="24" rx="12" fill="#dcfce7"/>
+  <circle cx="574" cy="262" r="4" fill="#16a34a"/>
+  <text x="584" y="267" font-size="12" fill="#15803d">Running</text>
+  <text x="740" y="267" font-size="13" fill="#475569">us-east-1</text>
+  <text x="900" y="267" font-size="13" fill="#475569">Container</text>
+  <text x="1060" y="267" font-size="13" fill="#475569">2m ago</text>
+
+  <!-- row 3 -->
+  <text x="292" y="315" font-size="14" font-weight="500" fill="#0f172a">order-db</text>
+  <rect x="560" y="298" width="84" height="24" rx="12" fill="#dcfce7"/>
+  <circle cx="574" cy="310" r="4" fill="#16a34a"/>
+  <text x="584" y="315" font-size="12" fill="#15803d">Running</text>
+  <text x="740" y="315" font-size="13" fill="#475569">us-east-1</text>
+  <text x="900" y="315" font-size="13" fill="#475569">PostgreSQL</text>
+  <text x="1060" y="315" font-size="13" fill="#475569">1d ago</text>
+
+  <!-- row 4 -->
+  <text x="292" y="363" font-size="14" font-weight="500" fill="#0f172a">order-cache</text>
+  <rect x="560" y="346" width="84" height="24" rx="12" fill="#dcfce7"/>
+  <circle cx="574" cy="358" r="4" fill="#16a34a"/>
+  <text x="584" y="363" font-size="12" fill="#15803d">Running</text>
+  <text x="740" y="363" font-size="13" fill="#475569">us-east-1</text>
+  <text x="900" y="363" font-size="13" fill="#475569">Redis</text>
+  <text x="1060" y="363" font-size="13" fill="#475569">1d ago</text>
+
+  <!-- row 5 -->
+  <text x="292" y="411" font-size="14" font-weight="500" fill="#0f172a">order-events</text>
+  <rect x="560" y="394" width="84" height="24" rx="12" fill="#fef3c7"/>
+  <circle cx="574" cy="406" r="4" fill="#d97706"/>
+  <text x="584" y="411" font-size="12" fill="#b45309">Degraded</text>
+  <text x="740" y="411" font-size="13" fill="#475569">us-east-1</text>
+  <text x="900" y="411" font-size="13" fill="#475569">Queue</text>
+  <text x="1060" y="411" font-size="13" fill="#475569">3h ago</text>
+
+  <!-- row 6 -->
+  <text x="292" y="459" font-size="14" font-weight="500" fill="#0f172a">legacy-billing</text>
+  <rect x="560" y="442" width="84" height="24" rx="12" fill="#e2e8f0"/>
+  <circle cx="574" cy="454" r="4" fill="#64748b"/>
+  <text x="584" y="459" font-size="12" fill="#475569">Stopped</text>
+  <text x="740" y="459" font-size="13" fill="#475569">eu-west-1</text>
+  <text x="900" y="459" font-size="13" fill="#475569">VM</text>
+  <text x="1060" y="459" font-size="13" fill="#475569">12d ago</text>
+
+  <!-- pagination -->
+  <text x="272" y="510" font-size="12" fill="#64748b">1–6 of 6 resources</text>
+</svg>

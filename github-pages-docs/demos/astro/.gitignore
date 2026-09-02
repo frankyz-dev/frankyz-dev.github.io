@@ -1,0 +1,21 @@
+# NOTE: dist/ (build output) is intentionally COMMITTED — this demo is
+# deployed to GitHub Pages from the committed build (see ../../README.md).
+# generated types
+.astro/
+
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+
+# environment variables
+.env
+.env.production
+
+# macOS-specific files
+.DS_Store

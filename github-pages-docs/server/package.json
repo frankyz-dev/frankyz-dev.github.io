@@ -1,0 +1,13 @@
+{
+  "name": "gh-pages-mock-server",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "description": "Basic HTTP server that mimics GitHub Pages: one origin, each demo under its own subpath, with a landing page at /.",
+  "scripts": {
+    "start": "node server.mjs"
+  },
+  "dependencies": {
+    "marked": "^15.0.0"
+  }
+}

@@ -1,0 +1,35 @@
+---
+sidebar_position: 0
+title: Acme Docs
+---
+
+# Acme Docs
+
+Operational documentation for the **Acme Order Service** — the backend
+system that powers order placement, payment, and fulfillment for the Acme
+storefront.
+
+## Where to look
+
+| Section | What's in it |
+| ------- | ------------ |
+| [Design](./design/architecture) | System architecture, order lifecycle, deployment pipeline, and design decisions (ADRs). |
+| [SOPs](./sops/deploy-release) | Standard operating procedures: deploying a release, rotating credentials. |
+| [Runbooks](./runbooks/high-error-rate) | Incident response: the high-error-rate alert and its diagnostics. |
+
+## Versions
+
+This site uses Docusaurus versioned docs. Use the version switcher in the
+navbar to read an older revision of the documentation (for example, the
+`1.0.0` architecture, which predates the asynchronous worker path). The
+**current** version is always the one being actively edited.
+
+## Conventions
+
+- **Status** lines at the top of each document indicate whether it is
+  active, approved, or archived.
+- Mermaid diagrams render inline; interactive components (like the order
+  state stepper in the architecture doc) are embedded directly in the
+  Markdown.
+- Code blocks in runbooks use line highlighting to mark the commands that
+  matter most.

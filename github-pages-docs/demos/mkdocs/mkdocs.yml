@@ -1,0 +1,111 @@
+# MkDocs Material — Demo for Option 3 (see DESIGN.md / ACTION_PLAN.md §2.3)
+#
+# Serve:  .venv/bin/mkdocs serve -a 127.0.0.1:4103
+# Build:  .venv/bin/mkdocs build
+#
+# See README.md for setup (uv) and a checklist of the features demoed.
+
+site_name: Acme Docs — MkDocs Material Demo
+site_description: >
+  Local demo of Option 3 (MkDocs + Material for MkDocs) for the
+  GitHub Pages documentation comparison. Serves the shared sample content
+  (design doc, SOPs, runbook) with Material features showcased.
+# Canonical URL on GitHub Pages (user site, project in the
+# github-pages-docs/ subfolder). Material emits relative links, so no base
+# path is needed for the links themselves — this only affects canonical URLs.
+site_url: https://frankyz-dev.github.io/github-pages-docs/mkdocs/
+
+# ---------------------------------------------------------------------------
+# Theme: Material for MkDocs
+# ---------------------------------------------------------------------------
+theme:
+  name: material
+  # Dark-mode toggle: two palettes (light + dark) with explicit toggles.
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  font:
+    text: Roboto
+    code: Roboto Mono
+  features:
+    - navigation.sections      # section headers in the sidebar
+    - navigation.top           # "back to top" link
+    - navigation.footer        # prev/next in the footer
+    - navigation.indexes       # section index pages
+    - content.code.copy        # copy button on code blocks
+    - search.highlight         # highlight search hits
+    - search.suggest           # "did you mean" suggestions
+    - toc.follow               # floating TOC that follows scroll
+
+# ---------------------------------------------------------------------------
+# Explicit nav for Design / SOPs / Runbooks
+# (two versions of the design doc are exposed as separate nav entries —
+#  see README.md "Versioning" for why this is the serve-mode mechanism)
+# ---------------------------------------------------------------------------
+nav:
+  - Home: index.md
+  # POC: subpage nested under the Architecture entry (see poc-subpage.md)
+  - Design (v2 — current):
+      - Architecture: design/architecture.md
+      - POC Subpage: design/poc-subpage.md
+  - Design (v1): design/architecture-v1.md
+  - SOPs:
+    - Deploy a Release: sops/deploy-release.md
+    - Rotate Gateway DB Credentials: sops/rotate-credentials.md
+  - Runbooks:
+    - High Error Rate: runbooks/high-error-rate.md
+
+# ---------------------------------------------------------------------------
+# Plugins
+#   - search:    Material built-in full-text search (client-side index)
+#   - mermaid2:  renders fenced ```mermaid blocks to mermaid.js divs
+# ---------------------------------------------------------------------------
+plugins:
+  - search
+  - mermaid2:
+      version: 10.4.0
+
+# ---------------------------------------------------------------------------
+# Markdown extensions (Material / pymdown-extensions)
+#   - admonition          -> !!! warning / !!! danger / !!! note callouts
+#   - pymdownx.tabbed     -> === "Kubernetes" / === "Docker" tabs
+#   - pymdownx.tasklist   -> - [ ] checklists
+#   - pymdownx.superfences-> code highlighting + mermaid custom fence
+# ---------------------------------------------------------------------------
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - footnotes
+  - toc:
+      permalink: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.details
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.superfences:
+      custom_fences:
+        # Render ```mermaid blocks as <div class="mermaid"> so that
+        # mkdocs-mermaid2-plugin can wire up mermaid.js.
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:mermaid2.fence_mermaid

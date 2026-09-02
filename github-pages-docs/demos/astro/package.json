@@ -1,0 +1,27 @@
+{
+  "name": "astro",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev --port 4106",
+    "start": "astro dev --port 4106",
+    "build": "astro build",
+    "preview": "astro preview --port 4106",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/markdown-satteri": "^0.4.0",
+    "@astrojs/mdx": "^8.0.0",
+    "@astrojs/react": "^6.0.5",
+    "@astrojs/starlight": "^0.41.11",
+    "astro": "^7.1.6",
+    "astro-mermaid": "^2.1.0",
+    "mermaid": "^11.17.2",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "sharp": "^0.35.3"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true
+  }
+}

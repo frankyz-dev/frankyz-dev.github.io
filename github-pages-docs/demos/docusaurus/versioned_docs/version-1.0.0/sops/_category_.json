@@ -1,0 +1,8 @@
+{
+  "label": "SOPs",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "description": "Standard operating procedures for the Acme Order Service."
+  }
+}

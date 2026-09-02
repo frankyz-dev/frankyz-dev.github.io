@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>frankyz-dev — Demos</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: #0d1117; color: #e6edf3;
+    margin: 0 auto; max-width: 780px; padding: 3rem 1.25rem 4rem;
+    line-height: 1.6;
+  }
+  h1 { font-size: 1.6rem; margin: 0 0 .5rem; }
+  .sub { color: #8b949e; margin: 0 0 2rem; }
+  ul.demos { list-style: none; margin: 0; padding: 0; display: grid; gap: .75rem; }
+  ul.demos li {
+    background: #161b22; border: 1px solid #30363d; border-radius: 8px;
+    padding: 1rem 1.25rem;
+  }
+  ul.demos a.name {
+    color: #58a6ff; text-decoration: none; font-weight: 600; font-size: 1.05rem;
+  }
+  ul.demos a.name:hover { text-decoration: underline; }
+  ul.demos .path { color: #8b949e; font-size: .8rem; font-family: ui-monospace, Menlo, Consolas, monospace; }
+  ul.demos p { margin: .35rem 0 0; color: #c9d1d9; font-size: .92rem; }
+</style>
+</head>
+<body>
+  <h1>Demos</h1>
+  <p class="sub">Things being demoed on this GitHub Pages site.</p>
+
+  <ul class="demos">
+    <li>
+      <a class="name" href="/github-pages-docs/">GitHub Pages Docs — Demo Index</a>
+      <span class="path">/github-pages-docs/</span>
+      <p>Five ways to host documentation on GitHub Pages (Astro Starlight, Docusaurus, MkDocs Material, VitePress, plain Markdown) — pick your favourite.</p>
+    </li>
+    <li>
+      <a class="name" href="/contacts/">Contacts</a>
+      <span class="path">/contacts/</span>
+      <p>Flutter web contacts demo.</p>
+    </li>
+  </ul>
+</body>
+</html>

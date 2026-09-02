@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://frankyz-dev.github.io/github-pages-docs/mkdocs/</loc>
+         <lastmod>2026-09-02</lastmod>
+    </url>
+    <url>
+         <loc>https://frankyz-dev.github.io/github-pages-docs/mkdocs/design/architecture-v1/</loc>
+         <lastmod>2026-09-02</lastmod>
+    </url>
+    <url>
+         <loc>https://frankyz-dev.github.io/github-pages-docs/mkdocs/design/architecture/</loc>
+         <lastmod>2026-09-02</lastmod>
+    </url>
+    <url>
+         <loc>https://frankyz-dev.github.io/github-pages-docs/mkdocs/design/poc-subpage/</loc>
+         <lastmod>2026-09-02</lastmod>
+    </url>
+    <url>
+         <loc>https://frankyz-dev.github.io/github-pages-docs/mkdocs/runbooks/high-error-rate/</loc>
+         <lastmod>2026-09-02</lastmod>
+    </url>
+    <url>
+         <loc>https://frankyz-dev.github.io/github-pages-docs/mkdocs/sops/deploy-release/</loc>
+         <lastmod>2026-09-02</lastmod>
+    </url>
+    <url>
+         <loc>https://frankyz-dev.github.io/github-pages-docs/mkdocs/sops/rotate-credentials/</loc>
+         <lastmod>2026-09-02</lastmod>
+    </url>
+</urlset>

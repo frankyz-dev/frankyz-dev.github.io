@@ -1,0 +1,15 @@
+# Dependencies (regenerable — see README.md "Rebuilding after content changes")
+node_modules/
+.venv/
+
+# VitePress dep-optimization cache (regenerable; dist/ is the real build output)
+demos/vitepress/docs/.vitepress/cache/
+
+# OS / editor noise
+.DS_Store
+*.swp
+
+# NOTE: the SSG build output directories (demos/astro/dist,
+# demos/docusaurus/build, demos/mkdocs/site,
+# demos/vitepress/docs/.vitepress/dist) are intentionally COMMITTED —
+# GitHub Pages serves them as-is (same pattern as the contacts/ demo).

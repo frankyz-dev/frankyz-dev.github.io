@@ -1,0 +1,35 @@
+---
+title: 'Acme Order Service Docs'
+description: 'Sample docs site for the docs-framework comparison: one design doc, two SOPs, and one runbook.'
+template: splash
+hero:
+  tag: Phase 2 demo — Option 6
+  title: Acme Order Service Docs
+  actions:
+    - text: Read the architecture
+      link: design/architecture
+      prominent: true
+    - text: Browse the SOPs
+      link: sops/deploy-release
+features:
+  - icon: document
+    title: Design
+    details: The architecture doc — components, order lifecycle, deployment pipeline, design decisions.
+  - icon: notes
+    title: SOPs
+    details: Standard operating procedures for releasing and rotating credentials, with typed lastUpdated frontmatter.
+  - icon: warning
+    title: Runbooks
+    details: The high-error-rate runbook — severity, fast-path mitigation, diagnostics, decision flowchart.
+---
+
+This site is the **Astro Starlight** demo (Option 6) in the docs-framework
+comparison. It serves the shared sample content with:
+
+- **Pagefind** full-text search (built into Starlight, indexed at build time)
+- **MDX** with an interactive React island (order-state stepper) in the
+  architecture doc
+- **Content collections** with typed frontmatter (`lastUpdated` on SOPs,
+  `severity` on the runbook)
+- **Mermaid** diagrams rendered client-side
+- **Dark mode** on by default

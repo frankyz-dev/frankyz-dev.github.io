@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GitHub Pages Docs — Demo Index</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: #0d1117; color: #e6edf3;
+    margin: 0 auto; max-width: 780px; padding: 3rem 1.25rem 4rem;
+    line-height: 1.6;
+  }
+  h1 { font-size: 1.6rem; margin: 0 0 .5rem; }
+  .sub { color: #8b949e; margin: 0 0 2rem; }
+  .sub code { background: #161b22; padding: .15em .4em; border-radius: 4px; font-size: 85%; }
+  ul.demos { list-style: none; margin: 0; padding: 0; display: grid; gap: .75rem; }
+  ul.demos li {
+    background: #161b22; border: 1px solid #30363d; border-radius: 8px;
+    padding: 1rem 1.25rem;
+  }
+  ul.demos a.name {
+    color: #58a6ff; text-decoration: none; font-weight: 600; font-size: 1.05rem;
+  }
+  ul.demos a.name:hover { text-decoration: underline; }
+  ul.demos .path { color: #8b949e; font-size: .8rem; font-family: ui-monospace, Menlo, Consolas, monospace; }
+  ul.demos p { margin: .35rem 0 0; color: #c9d1d9; font-size: .92rem; }
+  .note { margin-top: 2.5rem; padding-top: 1.25rem; border-top: 1px solid #21262d;
+          color: #8b949e; font-size: .85rem; }
+</style>
+</head>
+<body>
+  <h1>GitHub Pages Docs — Demo Index</h1>
+  <p class="sub">
+    Five ways to host documentation on GitHub Pages, each demoing the same
+    sample content. Served from <code>https://frankyz-dev.github.io/github-pages-docs/</code>
+    — the local mock server (<code>server/server.mjs</code>) mirrors this exact layout.
+  </p>
+
+  <ul class="demos">
+    <li>
+      <a class="name" href="astro/">Astro + Starlight</a>
+      <span class="path">/github-pages-docs/astro/</span>
+      <p>Docs theme on the Astro static site generator. Pagefind search, MDX, mermaid.</p>
+    </li>
+    <li>
+      <a class="name" href="docusaurus/">Docusaurus</a>
+      <span class="path">/github-pages-docs/docusaurus/</span>
+      <p>React-based docs framework (Meta). Local search, versioning, mermaid theme.</p>
+    </li>
+    <li>
+      <a class="name" href="mkdocs/">MkDocs Material</a>
+      <span class="path">/github-pages-docs/mkdocs/</span>
+      <p>Python-based MkDocs with the Material theme. Search, mermaid via CDN.</p>
+    </li>
+    <li>
+      <a class="name" href="vitepress/">VitePress</a>
+      <span class="path">/github-pages-docs/vitepress/</span>
+      <p>Vue-based, Vite-powered docs engine. Local search, mermaid plugin.</p>
+    </li>
+    <li>
+      <a class="name" href="plain-md/">Plain Markdown</a>
+      <span class="path">/github-pages-docs/plain-md/</span>
+      <p>No generator — the raw Markdown files, rendered the way GitHub's built-in renderer would.</p>
+    </li>
+  </ul>
+
+  <p class="note">
+    All five demos render the same sample content (design doc, SOPs, runbooks for the
+    fictional Acme Order Service). See <a href="DEMO_NOTES.md"><code>DEMO_NOTES.md</code></a>
+    for observations and <a href="README.md"><code>README.md</code></a> for setup.
+  </p>
+</body>
+</html>
