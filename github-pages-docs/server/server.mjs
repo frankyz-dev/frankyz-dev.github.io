@@ -30,12 +30,14 @@ const HOST = process.env.HOST || '127.0.0.1';
 const BASE = '/github-pages-docs';
 
 // Subpath → build output directory. Order matters only for readability.
+// These are the SAME directories GitHub Pages serves (committed build
+// output at the project root) — the local layout is 1:1 with production.
 const ROUTES = [
-  { prefix: `${BASE}/astro/`, root: path.join(REPO_ROOT, 'demos/astro/dist') },
-  { prefix: `${BASE}/docusaurus/`, root: path.join(REPO_ROOT, 'demos/docusaurus/build') },
-  { prefix: `${BASE}/mkdocs/`, root: path.join(REPO_ROOT, 'demos/mkdocs/site') },
-  { prefix: `${BASE}/vitepress/`, root: path.join(REPO_ROOT, 'demos/vitepress/docs/.vitepress/dist') },
-  { prefix: `${BASE}/plain-md/`, root: path.join(REPO_ROOT, 'demos/plain-md'), renderMd: true },
+  { prefix: `${BASE}/astro/`, root: path.join(REPO_ROOT, 'astro') },
+  { prefix: `${BASE}/docusaurus/`, root: path.join(REPO_ROOT, 'docusaurus') },
+  { prefix: `${BASE}/mkdocs/`, root: path.join(REPO_ROOT, 'mkdocs') },
+  { prefix: `${BASE}/vitepress/`, root: path.join(REPO_ROOT, 'vitepress') },
+  { prefix: `${BASE}/plain-md/`, root: path.join(REPO_ROOT, 'plain-md'), renderMd: true },
 ];
 
 const MIME = {

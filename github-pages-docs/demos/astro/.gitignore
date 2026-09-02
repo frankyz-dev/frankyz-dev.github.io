@@ -1,5 +1,5 @@
-# NOTE: dist/ (build output) is intentionally COMMITTED — this demo is
-# deployed to GitHub Pages from the committed build (see ../../README.md).
+# build output (deployed copy lives at the project root: ../../astro/)
+dist/
 # generated types
 .astro/
 

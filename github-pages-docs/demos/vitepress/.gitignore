@@ -8,10 +8,8 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
-# NOTE: docs/.vitepress/dist (build output) is intentionally COMMITTED —
-# this demo is deployed to GitHub Pages from the committed build
-# (see ../../README.md). docs/.vitepress/cache is ignored via the
-# project-root .gitignore.
+# build output (deployed copy lives at the project root: ../../vitepress/)
+dist
 dist-ssr
 *.local
 

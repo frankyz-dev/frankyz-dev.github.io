@@ -1,8 +1,8 @@
 # Dependencies
 /node_modules
 
-# NOTE: build/ (build output) is intentionally COMMITTED — this demo is
-# deployed to GitHub Pages from the committed build (see ../../README.md).
+# Production (deployed copy lives at the project root: ../../docusaurus/)
+/build
 
 # Generated files
 .docusaurus

@@ -2,14 +2,15 @@
 node_modules/
 .venv/
 
-# VitePress dep-optimization cache (regenerable; dist/ is the real build output)
+# SSG build caches (regenerable; the deployed build output lives at the
+# project root: astro/, docusaurus/, mkdocs/, vitepress/)
 demos/vitepress/docs/.vitepress/cache/
+demos/docusaurus/.docusaurus/
 
 # OS / editor noise
 .DS_Store
 *.swp
 
-# NOTE: the SSG build output directories (demos/astro/dist,
-# demos/docusaurus/build, demos/mkdocs/site,
-# demos/vitepress/docs/.vitepress/dist) are intentionally COMMITTED —
-# GitHub Pages serves them as-is (same pattern as the contacts/ demo).
+# NOTE: the top-level astro/, docusaurus/, mkdocs/, vitepress/ directories
+# are the COMMITTED build output that GitHub Pages serves — do not ignore
+# them. After rebuilding a demo, run scripts/sync-builds.sh to refresh them.

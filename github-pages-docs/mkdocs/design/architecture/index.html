@@ -1,0 +1,975 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Local demo of Option 3 (MkDocs + Material for MkDocs) for the GitHub Pages documentation comparison. Serves the shared sample content (design doc, SOPs, runbook) with Material features showcased.
+" name="description"/>
+<link href="https://frankyz-dev.github.io/github-pages-docs/mkdocs/design/architecture/" rel="canonical"/>
+<link href="../.." rel="prev"/>
+<link href="../poc-subpage/" rel="next"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.7" name="generator"/>
+<title>Architecture - Acme Docs — MkDocs Material Demo</title>
+<link href="../../assets/stylesheets/main.ec1eaa64.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#acme-order-service-architecture">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Acme Docs — MkDocs Material Demo" class="md-header__button md-logo" data-md-component="logo" href="../.." title="Acme Docs — MkDocs Material Demo">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Acme Docs — MkDocs Material Demo
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Architecture
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="indigo" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="indigo" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+<div class="md-search__suggest" data-md-component="search-suggest"></div>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Acme Docs — MkDocs Material Demo" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="Acme Docs — MkDocs Material Demo">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    Acme Docs — MkDocs Material Demo
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+<span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+<span class="md-ellipsis">
+    
+  
+    Design (v2 — current)
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Design (v2 — current)
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#overview">
+<span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#system-architecture">
+<span class="md-ellipsis">
+      
+        System Architecture
+      
+    </span>
+</a>
+<nav aria-label="System Architecture" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#component-inventory">
+<span class="md-ellipsis">
+      
+        Component inventory
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#component-notes">
+<span class="md-ellipsis">
+      
+        Component notes
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#service-configuration">
+<span class="md-ellipsis">
+      
+        Service configuration
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#data-flow">
+<span class="md-ellipsis">
+      
+        Data Flow
+      
+    </span>
+</a>
+<nav aria-label="Data Flow" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#order-lifecycle">
+<span class="md-ellipsis">
+      
+        Order lifecycle
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#failure-handling">
+<span class="md-ellipsis">
+      
+        Failure handling
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#deployment">
+<span class="md-ellipsis">
+      
+        Deployment
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#design-decisions">
+<span class="md-ellipsis">
+      
+        Design Decisions
+      
+    </span>
+</a>
+<nav aria-label="Design Decisions" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#adr-001-stateless-order-service-behind-a-thin-gateway">
+<span class="md-ellipsis">
+      
+        ADR-001: Stateless order service behind a thin gateway
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#adr-002-asynchronous-event-processing-for-payment-and-webhooks">
+<span class="md-ellipsis">
+      
+        ADR-002: Asynchronous event processing for payment and webhooks
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#adr-003-postgresql-as-the-system-of-record-redis-as-a-disposable-cache">
+<span class="md-ellipsis">
+      
+        ADR-003: PostgreSQL as the system of record, Redis as a disposable cache
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#trade-offs">
+<span class="md-ellipsis">
+      
+        Trade-offs
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#footnotes">
+<span class="md-ellipsis">
+      
+        Footnotes
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../poc-subpage/">
+<span class="md-ellipsis">
+    
+  
+    POC Subpage
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../architecture-v1/">
+<span class="md-ellipsis">
+    
+  
+    Design (v1)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+<span class="md-ellipsis">
+    
+  
+    SOPs
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    SOPs
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../sops/deploy-release/">
+<span class="md-ellipsis">
+    
+  
+    Deploy a Release
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../sops/rotate-credentials/">
+<span class="md-ellipsis">
+    
+  
+    Rotate Gateway DB Credentials
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+<span class="md-ellipsis">
+    
+  
+    Runbooks
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Runbooks
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../runbooks/high-error-rate/">
+<span class="md-ellipsis">
+    
+  
+    High Error Rate
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#overview">
+<span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#system-architecture">
+<span class="md-ellipsis">
+      
+        System Architecture
+      
+    </span>
+</a>
+<nav aria-label="System Architecture" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#component-inventory">
+<span class="md-ellipsis">
+      
+        Component inventory
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#component-notes">
+<span class="md-ellipsis">
+      
+        Component notes
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#service-configuration">
+<span class="md-ellipsis">
+      
+        Service configuration
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#data-flow">
+<span class="md-ellipsis">
+      
+        Data Flow
+      
+    </span>
+</a>
+<nav aria-label="Data Flow" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#order-lifecycle">
+<span class="md-ellipsis">
+      
+        Order lifecycle
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#failure-handling">
+<span class="md-ellipsis">
+      
+        Failure handling
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#deployment">
+<span class="md-ellipsis">
+      
+        Deployment
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#design-decisions">
+<span class="md-ellipsis">
+      
+        Design Decisions
+      
+    </span>
+</a>
+<nav aria-label="Design Decisions" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#adr-001-stateless-order-service-behind-a-thin-gateway">
+<span class="md-ellipsis">
+      
+        ADR-001: Stateless order service behind a thin gateway
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#adr-002-asynchronous-event-processing-for-payment-and-webhooks">
+<span class="md-ellipsis">
+      
+        ADR-002: Asynchronous event processing for payment and webhooks
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#adr-003-postgresql-as-the-system-of-record-redis-as-a-disposable-cache">
+<span class="md-ellipsis">
+      
+        ADR-003: PostgreSQL as the system of record, Redis as a disposable cache
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#trade-offs">
+<span class="md-ellipsis">
+      
+        Trade-offs
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#footnotes">
+<span class="md-ellipsis">
+      
+        Footnotes
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="acme-order-service-architecture">Acme Order Service — Architecture<a class="headerlink" href="#acme-order-service-architecture" title="Permanent link">¶</a></h1>
+<p><strong>Status:</strong> Approved · <strong>Owner:</strong> Platform Team · <strong>Last reviewed:</strong> 2026-09-01</p>
+<div class="admonition note">
+<p class="admonition-title">Version</p>
+<p>You are reading the <strong>current (v2)</strong> architecture.
+<a href="../architecture-v1/">View v1 (previous)</a></p>
+</div>
+<p>This document describes the architecture of the Acme Order Service, the
+backend system that powers order placement, payment, and fulfillment for
+the Acme storefront. It covers the component inventory, the order
+lifecycle, the deployment pipeline, and the design decisions behind the
+system.</p>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">¶</a></h2>
+<p>The Acme Order Service is a backend service that owns the order lifecycle
+for the Acme storefront: creating orders, validating them, capturing
+payment, tracking fulfillment, and notifying customers of status changes.
+It sits between the customer-facing web client and the data stores, and it
+is the single source of truth for order state.</p>
+<p>The service is deliberately split into a synchronous request path and an
+asynchronous event path. The synchronous path — web client, API gateway,
+and the stateless order service — handles the interactive "place an order"
+request and returns quickly with an accepted response. The asynchronous
+path — message queue and workers — handles everything that does not need
+to block the customer: payment authorization, inventory holds, webhooks,
+and status updates.</p>
+<p>This split keeps the customer-facing path fast and predictable while
+allowing the expensive, flaky, or slow work (payment providers,
+third-party webhooks) to be retried independently without degrading the
+request path. The rest of this document describes each component, the
+order lifecycle, the deployment pipeline, and the design decisions behind
+these choices.</p>
+<h2 id="system-architecture">System Architecture<a class="headerlink" href="#system-architecture" title="Permanent link">¶</a></h2>
+<p>The diagram below shows the full system. The synchronous request path runs
+down the center (web client → API gateway → order service), and the
+asynchronous event path runs along the right side (order service → message
+queue → worker).</p>
+<p><img alt="Acme Order Service system architecture" src="../../images/architecture.svg"/></p>
+<h3 id="component-inventory">Component inventory<a class="headerlink" href="#component-inventory" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Technology</th>
+<th>Responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Web client</td>
+<td>React SPA</td>
+<td>Customer-facing storefront</td>
+</tr>
+<tr>
+<td>API gateway</td>
+<td>Envoy</td>
+<td>Auth, routing, rate limiting, TLS</td>
+</tr>
+<tr>
+<td>Order service</td>
+<td>Go (HTTP)</td>
+<td>Order lifecycle API; persists orders</td>
+</tr>
+<tr>
+<td>Message queue</td>
+<td>RabbitMQ</td>
+<td>Durable buffer for order events</td>
+</tr>
+<tr>
+<td>Worker</td>
+<td>Go (consumer)</td>
+<td>Async jobs: payment, webhooks</td>
+</tr>
+<tr>
+<td>PostgreSQL</td>
+<td>PostgreSQL 16</td>
+<td>System of record for orders, payments</td>
+</tr>
+<tr>
+<td>Redis</td>
+<td>Redis 7</td>
+<td>Session store, hot order cache</td>
+</tr>
+</tbody>
+</table>
+<h3 id="component-notes">Component notes<a class="headerlink" href="#component-notes" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Web client.</strong> A React single-page app running in the browser. It is the
+  only component that talks to the API gateway directly; all traffic is
+  HTTPS.</li>
+<li><strong>API gateway.</strong> Terminates TLS, authenticates requests, enforces rate
+  limits, and routes to the order service. It is intentionally thin: no
+  business logic lives here.</li>
+<li><strong>Order service.</strong> A stateless Go service that owns the order lifecycle.
+  It validates incoming orders, persists them to PostgreSQL, and publishes
+  lifecycle events to the message queue. Because it is stateless, it scales
+  horizontally behind the gateway.</li>
+<li><strong>Message queue.</strong> A durable queue that decouples the order service from
+  the worker. Events survive restarts of either side and are delivered at
+  least once.</li>
+<li><strong>Worker.</strong> Consumes order events and performs the slow work:
+  authorizing payment, reserving inventory, and calling customer webhooks.
+  Workers are idempotent because queue delivery is at-least-once.<sup id="fnref2:1"><a class="footnote-ref" href="#fn:1">1</a></sup></li>
+<li><strong>PostgreSQL.</strong> The system of record. Every order state transition is a
+  row update, so the database is the source of truth for order status.</li>
+<li><strong>Redis.</strong> Caches hot order lookups and holds session data. It is
+  disposable: losing it degrades performance but never correctness, because
+  every cached value can be rebuilt from PostgreSQL.</li>
+</ul>
+<h3 id="service-configuration">Service configuration<a class="headerlink" href="#service-configuration" title="Permanent link">¶</a></h3>
+<p>The order service is configured through a single YAML file mounted into the
+container. The values shown here are representative; real values live in
+the secret manager, never in the repository.</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="nt">service</span><span class="p">:</span>
+</span><span id="__span-0-2"><a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">order-service</span>
+</span><span id="__span-0-3"><a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">  </span><span class="nt">env</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">production</span>
+</span><span id="__span-0-4"><a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+</span><span id="__span-0-5"><a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
+</span><span id="__span-0-6"><a href="#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a>
+</span><span id="__span-0-7"><a href="#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="nt">database</span><span class="p">:</span>
+</span><span id="__span-0-8"><a href="#__codelineno-0-8" id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">  </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">orders-db.internal</span>
+</span><span id="__span-0-9"><a href="#__codelineno-0-9" id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5432</span>
+</span><span id="__span-0-10"><a href="#__codelineno-0-10" id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="w">  </span><span class="nt">database</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">orders</span>
+</span><span id="__span-0-11"><a href="#__codelineno-0-11" id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="w">  </span><span class="nt">pool_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
+</span><span id="__span-0-12"><a href="#__codelineno-0-12" id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="w">  </span><span class="nt">statement_timeout_ms</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5000</span>
+</span><span id="__span-0-13"><a href="#__codelineno-0-13" id="__codelineno-0-13" name="__codelineno-0-13"></a>
+</span><span id="__span-0-14"><a href="#__codelineno-0-14" id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="nt">cache</span><span class="p">:</span>
+</span><span id="__span-0-15"><a href="#__codelineno-0-15" id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="w">  </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">orders-cache.internal</span>
+</span><span id="__span-0-16"><a href="#__codelineno-0-16" id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6379</span>
+</span><span id="__span-0-17"><a href="#__codelineno-0-17" id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="w">  </span><span class="nt">session_ttl_seconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3600</span>
+</span><span id="__span-0-18"><a href="#__codelineno-0-18" id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="w">  </span><span class="nt">order_cache_ttl_seconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">300</span>
+</span><span id="__span-0-19"><a href="#__codelineno-0-19" id="__codelineno-0-19" name="__codelineno-0-19"></a>
+</span><span id="__span-0-20"><a href="#__codelineno-0-20" id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="nt">queue</span><span class="p">:</span>
+</span><span id="__span-0-21"><a href="#__codelineno-0-21" id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="w">  </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">amqp://orders-queue.internal:5672</span>
+</span><span id="__span-0-22"><a href="#__codelineno-0-22" id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="w">  </span><span class="nt">exchange</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">order-events</span>
+</span><span id="__span-0-23"><a href="#__codelineno-0-23" id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="w">  </span><span class="nt">prefetch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+</span><span id="__span-0-24"><a href="#__codelineno-0-24" id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="w">  </span><span class="nt">retry</span><span class="p">:</span>
+</span><span id="__span-0-25"><a href="#__codelineno-0-25" id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="w">    </span><span class="nt">max_attempts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+</span><span id="__span-0-26"><a href="#__codelineno-0-26" id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="w">    </span><span class="nt">backoff_seconds</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">1</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">5</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">30</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">120</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">600</span><span class="p p-Indicator">]</span>
+</span><span id="__span-0-27"><a href="#__codelineno-0-27" id="__codelineno-0-27" name="__codelineno-0-27"></a>
+</span><span id="__span-0-28"><a href="#__codelineno-0-28" id="__codelineno-0-28" name="__codelineno-0-28"></a><span class="nt">webhooks</span><span class="p">:</span>
+</span><span id="__span-0-29"><a href="#__codelineno-0-29" id="__codelineno-0-29" name="__codelineno-0-29"></a><span class="w">  </span><span class="nt">timeout_ms</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3000</span>
+</span><span id="__span-0-30"><a href="#__codelineno-0-30" id="__codelineno-0-30" name="__codelineno-0-30"></a><span class="w">  </span><span class="nt">max_retries</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+</span></code></pre></div>
+<h2 id="data-flow">Data Flow<a class="headerlink" href="#data-flow" title="Permanent link">¶</a></h2>
+<h3 id="order-lifecycle">Order lifecycle<a class="headerlink" href="#order-lifecycle" title="Permanent link">¶</a></h3>
+<p>An order moves through five states: <code>created</code> → <code>validated</code> → <code>paid</code> →
+<code>fulfilled</code> → <code>completed</code>, with <code>cancelled</code> reachable from <code>created</code> or
+<code>validated</code>. The sequence diagram below shows the happy path for placing
+and paying an order.</p>
+<div class="mermaid">sequenceDiagram
+    participant C as Web Client
+    participant G as API Gateway
+    participant O as Order Service
+    participant P as PostgreSQL
+    participant R as Redis
+    participant Q as Message Queue
+    participant W as Worker
+
+    C-&gt;&gt;G: POST /orders (HTTPS)
+    G-&gt;&gt;G: authenticate + rate limit
+    G-&gt;&gt;O: forward request (REST)
+    O-&gt;&gt;R: load session, check idempotency key
+    O-&gt;&gt;P: INSERT order (status=created)
+    O-&gt;&gt;Q: publish order.created
+    O--&gt;&gt;G: 202 Accepted
+    G--&gt;&gt;C: 202 Accepted
+    Q-&gt;&gt;W: deliver order.created
+    W-&gt;&gt;P: authorize payment
+    W-&gt;&gt;P: UPDATE order (status=paid)
+    W-&gt;&gt;Q: publish order.paid
+    W-&gt;&gt;C: webhook: order.paid
+    W-&gt;&gt;P: UPDATE order (status=fulfilled)
+    W-&gt;&gt;Q: publish order.fulfilled
+    W-&gt;&gt;C: webhook: order.fulfilled
+    W-&gt;&gt;P: UPDATE order (status=completed)
+</div>
+<p>A few properties follow from this flow:</p>
+<ul>
+<li>The customer gets a <code>202 Accepted</code> as soon as the order row is written;
+  payment happens out of band.</li>
+<li>Every state transition is persisted to PostgreSQL before the
+  corresponding event is published, so the database is never behind the
+  queue.</li>
+<li>Webhooks are best-effort notifications; the order state in the database
+  is authoritative even if a webhook is lost.</li>
+</ul>
+<h3 id="failure-handling">Failure handling<a class="headerlink" href="#failure-handling" title="Permanent link">¶</a></h3>
+<p>If the worker fails while processing an event, the event is requeued with
+exponential backoff (see the <code>queue.retry</code> block above). After the maximum
+number of attempts the event is moved to a dead-letter queue and paged to
+the on-call engineer. Because workers are idempotent, redelivery is safe.</p>
+<h3 id="deployment">Deployment<a class="headerlink" href="#deployment" title="Permanent link">¶</a></h3>
+<p>Every change ships through the same pipeline, shown below. Failures at the
+verification stage roll back automatically; there is no manual promotion
+step.</p>
+<p><img alt="Acme Order Service deployment pipeline" src="../../images/deploy-flow.svg"/></p>
+<p>The pipeline stages are:</p>
+<ol>
+<li><strong>Commit</strong> — a change lands on <code>main</code> via a reviewed pull request.</li>
+<li><strong>CI</strong> — unit and integration tests run against the change.</li>
+<li><strong>Build image</strong> — a container image is built and pushed to the registry.</li>
+<li><strong>Deploy staging</strong> — the image is deployed to staging as a 10% canary.</li>
+<li><strong>Verify</strong> — smoke checks run against the canary (health endpoints, a
+   synthetic order round-trip).</li>
+<li><strong>Deploy prod</strong> — on a pass, the image rolls out to production. On a
+   fail, the pipeline rolls back to the last good image and retries the
+   failed stage after a fix.<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup></li>
+</ol>
+<h2 id="design-decisions">Design Decisions<a class="headerlink" href="#design-decisions" title="Permanent link">¶</a></h2>
+<h3 id="adr-001-stateless-order-service-behind-a-thin-gateway">ADR-001: Stateless order service behind a thin gateway<a class="headerlink" href="#adr-001-stateless-order-service-behind-a-thin-gateway" title="Permanent link">¶</a></h3>
+<p><strong>Context.</strong> The order service handles bursty traffic (sales events,
+marketing pushes) and must be able to scale quickly without losing
+in-flight requests.</p>
+<p><strong>Decision.</strong> The order service is stateless: all state lives in
+PostgreSQL, and session data lives in Redis. The API gateway is kept thin
+(authentication, routing, rate limiting only) so that scaling the service
+is a matter of adding replicas.</p>
+<p><strong>Consequences.</strong> Scaling is trivial and deploys are rolling, with no
+session affinity. The cost is that every request pays a cache or database
+round-trip, and the gateway must be highly available because it is a
+single entry point.</p>
+<h3 id="adr-002-asynchronous-event-processing-for-payment-and-webhooks">ADR-002: Asynchronous event processing for payment and webhooks<a class="headerlink" href="#adr-002-asynchronous-event-processing-for-payment-and-webhooks" title="Permanent link">¶</a></h3>
+<p><strong>Context.</strong> Payment authorization takes 200 ms to several seconds and can
+fail transiently; customer webhooks are third-party endpoints with
+unpredictable latency. Doing this work synchronously would make order
+placement slow and fragile.</p>
+<p><strong>Decision.</strong> The order service publishes lifecycle events to a durable
+message queue, and the worker consumes them to perform payment,
+fulfillment, and webhook delivery. The customer-facing request returns
+<code>202 Accepted</code> as soon as the order is persisted.</p>
+<p><strong>Consequences.</strong> The request path is fast and isolated from third-party
+failures, and slow work can be retried independently. The cost is eventual
+consistency: there is a short window where the customer has an order that
+is not yet paid, and the system must handle at-least-once delivery with
+idempotent workers.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></p>
+<h3 id="adr-003-postgresql-as-the-system-of-record-redis-as-a-disposable-cache">ADR-003: PostgreSQL as the system of record, Redis as a disposable cache<a class="headerlink" href="#adr-003-postgresql-as-the-system-of-record-redis-as-a-disposable-cache" title="Permanent link">¶</a></h3>
+<p><strong>Context.</strong> Order state must be durable and queryable, but the read path
+(hot order lookups, sessions) is high-volume and latency-sensitive.</p>
+<p><strong>Decision.</strong> PostgreSQL is the single source of truth for orders and
+payments. Redis caches hot lookups and holds sessions, but is treated as
+disposable: any value in it can be rebuilt from PostgreSQL.</p>
+<p><strong>Consequences.</strong> Correctness never depends on the cache, so a Redis
+outage degrades performance but not data integrity. The cost is that cache
+misses fall through to PostgreSQL, so the database must be sized for the
+worst-case read load.<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup></p>
+<h2 id="trade-offs">Trade-offs<a class="headerlink" href="#trade-offs" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Decision</th>
+<th>What we gained</th>
+<th>What we gave up</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Stateless service</td>
+<td>Fast deploys, easy scaling</td>
+<td>Per-request DB hits</td>
+</tr>
+<tr>
+<td>Async events</td>
+<td>Fast 202s, fault isolation</td>
+<td>Eventual consistency</td>
+</tr>
+<tr>
+<td>Postgres SoR</td>
+<td>Durability, queryability</td>
+<td>DB absorbs cache misses</td>
+</tr>
+<tr>
+<td>At-least-once</td>
+<td>No lost events</td>
+<td>Duplicates; idempotency</td>
+</tr>
+<tr>
+<td>Auto rollback</td>
+<td>No manual promotion</td>
+<td>Bad canary blocks pipeline</td>
+</tr>
+</tbody>
+</table>
+<h2 id="footnotes">Footnotes<a class="headerlink" href="#footnotes" title="Permanent link">¶</a></h2>
+<div class="footnote">
+<hr/>
+<ol>
+<li id="fn:1">
+<p>At-least-once delivery means the worker may process the same event
+twice if it crashes after processing but before acknowledging. Every
+worker therefore checks for an existing result before acting. <a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">↩</a><a class="footnote-backref" href="#fnref2:1" title="Jump back to footnote 1 in the text">↩</a></p>
+</li>
+<li id="fn:2">
+<p>The cache is sized for the p99 read path, not the worst case; the
+database is sized for the worst case. This keeps Redis small and cheap
+while keeping the system correct under a full cache miss. <a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">↩</a></p>
+</li>
+<li id="fn:3">
+<p>The deployment pipeline is covered operationally in the
+<code>deploy-release</code> SOP, which documents how to override the pipeline when
+it fails. <a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">↩</a></p>
+</li>
+</ol>
+</div>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="Previous: Home" class="md-footer__link md-footer__link--prev" href="../..">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</div>
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                Previous
+              </span>
+<div class="md-ellipsis">
+                Home
+              </div>
+</div>
+</a>
+<a aria-label="Next: POC Subpage" class="md-footer__link md-footer__link--next" href="../poc-subpage/">
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                Next
+              </span>
+<div class="md-ellipsis">
+                POC Subpage
+              </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.top", "navigation.footer", "navigation.indexes", "content.code.copy", "search.highlight", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
+mermaid.initialize({});</script></body>
+</html>

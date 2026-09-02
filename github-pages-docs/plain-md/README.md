@@ -29,7 +29,7 @@ There is nothing to build or serve — the files are read raw:
   experience:
 
   ```sh
-  cd demos/plain-md
+  cd plain-md
   python3 -m http.server 4101
   ```
 

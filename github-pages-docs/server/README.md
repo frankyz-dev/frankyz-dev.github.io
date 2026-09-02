@@ -8,11 +8,11 @@ project lives in the `github-pages-docs/` subfolder of the
 ```
 http://127.0.0.1:4100/                        → redirects to /github-pages-docs/
 http://127.0.0.1:4100/github-pages-docs/      → landing page (links to all demos)
-http://127.0.0.1:4100/github-pages-docs/astro/      → Astro + Starlight   (demos/astro/dist)
-http://127.0.0.1:4100/github-pages-docs/docusaurus/ → Docusaurus          (demos/docusaurus/build)
-http://127.0.0.1:4100/github-pages-docs/mkdocs/     → MkDocs Material     (demos/mkdocs/site)
-http://127.0.0.1:4100/github-pages-docs/vitepress/  → VitePress           (demos/vitepress/docs/.vitepress/dist)
-http://127.0.0.1:4100/github-pages-docs/plain-md/   → Plain Markdown      (demos/plain-md, .md rendered)
+http://127.0.0.1:4100/github-pages-docs/astro/      → Astro + Starlight   (astro/)
+http://127.0.0.1:4100/github-pages-docs/docusaurus/ → Docusaurus          (docusaurus/)
+http://127.0.0.1:4100/github-pages-docs/mkdocs/     → MkDocs Material     (mkdocs/)
+http://127.0.0.1:4100/github-pages-docs/vitepress/  → VitePress           (vitepress/)
+http://127.0.0.1:4100/github-pages-docs/plain-md/   → Plain Markdown      (plain-md/, .md rendered)
 ```
 
 These local URLs match the production URLs on
@@ -31,7 +31,8 @@ npm start          # → http://127.0.0.1:4100/github-pages-docs/
 ## How it works
 
 - `server.mjs` is a ~200-line zero-framework Node HTTP server (only
-  `node:http` + `node:fs`), mapping each subpath to a demo's build output.
+  `node:http` + `node:fs`), mapping each subpath to the committed build output
+  directory at the project root — the exact same files GitHub Pages serves.
   It handles directory → `index.html`, VitePress-style `path.html` fallbacks,
   trailing-slash redirects, MIME types, and path-traversal protection.
 - The landing page is the static `index.html` at the project root — the same
@@ -53,7 +54,9 @@ cd ../demos/astro      && npm run build
 cd ../demos/docusaurus && npm run build
 cd ../demos/vitepress  && npm run docs:build
 cd ../demos/mkdocs     && .venv/bin/mkdocs build
+cd .. && scripts/sync-builds.sh   # refresh the top-level deployed copies
 ```
 
-No rebuild needed for `plain-md`. Commit the rebuilt output directories
-(`dist/`, `build/`, `site/`) — GitHub Pages serves them as-is.
+No rebuild needed for `plain-md`. Commit the refreshed top-level directories
+(`astro/`, `docusaurus/`, `mkdocs/`, `vitepress/`) — GitHub Pages serves
+them as-is.
